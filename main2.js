@@ -19,13 +19,15 @@ xhr.onload = () => {
 
     meals.forEach(meal => {
       // const imageItem = document.get('img');
-      const col = document.querySelector('.column');
+      const col = document.createElement('div');
+      col.setAttribute('src','col-lg-4 col-md-6 mb-2 column');
 
       const rentItem = document.createElement('div');
       rentItem.setAttribute('class', 'rent-item mb-4')
 
       const Image = document.createElement('img');
       Image.setAttribute('class', 'img-fluid mb-4')
+      Image.setAttribute('style', 'height: 300px')
       Image.src = meal.strMealThumb;
       Image.alt = meal.strMeal;
       rentItem.appendChild(Image);
