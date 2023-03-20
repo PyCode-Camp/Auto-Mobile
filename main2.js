@@ -32,6 +32,11 @@ xhr.onload = () => {
       Image.alt = meal.strMeal;
       rentItem.appendChild(Image);
 
+      const stat = document.querySelector('stats');
+      rentItem.appendChild(stat) =
+     
+      
+
       col.appendChild(rentItem);
       row.appendChild(col);
 
