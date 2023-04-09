@@ -32,6 +32,8 @@ const row = document.createElement('div');
 row.classList.add('row');
 
     meals.forEach(meal => {
+
+        console.log(meal);
     //   const col = document.createElement('div');
     //   col.setAttribute('class', 'col-lg-4 col-md-6 mb-2 column');
 
@@ -126,9 +128,10 @@ rentItem.appendChild(stats);
 // create view button
 const viewButton = document.createElement('button');
 viewButton.type = 'button';
-viewButton.classList.add('btn', 'btn-primary');
+viewButton.classList.add('btn', 'btn-primary','view-button');
 viewButton.dataset.toggle = 'modal';
 viewButton.dataset.target = '#exampleModalLong';
+viewButton.dataset.mealId=meal.idMeal; 
 viewButton.textContent = 'view';
 
 rentItem.appendChild(viewButton);
@@ -158,7 +161,23 @@ likeButton.appendChild(likeWrapper);
 
 rentItem.appendChild(likeButton);
 
-// create modal
+
+
+// Step 1: Add click event listener to "View" button
+const viewButtons = document.querySelectorAll('.view-button');
+viewButtons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    // Step 2: Get meal ID from data attribute or event argument
+    const mealId = event.target.dataset.mealId;
+
+    // Step 3: Make AJAX request to server
+    fetch(`www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}}`)
+      .then(response => response.json())
+      .then(data => {
+        // Step 6: Populate modal with meal data
+       
+        
+        // create modal
 const modal = document.createElement('div');
 modal.classList.add('modal', 'fade');
 modal.id = 'exampleModalLong';
@@ -184,7 +203,7 @@ modalContent.appendChild(modalHeader);
 
 const modalTitle = document.createElement('h5');
 modalTitle.classList.add('modal-title');
-modalTitle.textContent = meal.strMeal;
+modalTitle.textContent = data.strMeal;
 modalHeader.appendChild(modalTitle);
 
 const modalCloseButton = document.createElement('button');
@@ -199,6 +218,10 @@ closeButtonIcon.setAttribute('aria-hidden', 'true');
 closeButtonIcon.innerHTML = '×';
 modalCloseButton.appendChild(closeButtonIcon);
 
+
+
+
+
 // Add modal body
 const modalBody = document.createElement('div');
 modalBody.classList.add('modal-body');
@@ -206,7 +229,7 @@ modalContent.appendChild(modalBody);
 
 const modalBodyImage = document.createElement('img');
 modalBodyImage.classList.add('img-fluid', 'mb-4');
-modalBodyImage.setAttribute('src', `${meal.strMealThumb}`);
+modalBodyImage.setAttribute('src', `${data.strMealThumb}`);
 modalBodyImage.setAttribute('alt', '');
 modalBody.appendChild(modalBodyImage);
 
@@ -270,10 +293,24 @@ closeButton.setAttribute('type', 'button');
 closeButton.setAttribute('data-dismiss', 'modal');
 closeButton.textContent = 'Close';
 modalFooter.appendChild(closeButton);
+        
+
+        // modalTitle.textContent = data.name;
+        // modalDescription.textContent = data.description;
+        // modalImage.src = data.image;
+
+        rentItem.appendChild(modal);
+      });
+  });
+});
+
+
+
+
 
 // Append modal to the document body
 // document.body.appendChild(modalDialog);
-rentItem.appendChild(modal);
+
 col1.appendChild(rentItem);
 row.appendChild(col1);
 
