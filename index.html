@@ -31,6 +31,7 @@
 </head>
 
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="position-relative px-lg-5" style="z-index: 9;">
@@ -66,14 +67,14 @@
 
 
     <!-- Rent A Car Start -->
-    <div class="container-fluid py-5">
+    <!-- <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-2 column">
                     <div class="rent-item mb-4">
                         <img class="img-fluid mb-4" src="img/car-rent-1.png" alt="">
                         <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
-                        <div class="d-flex justify-content-center mb-4">
+                        <div class="d-flex justify-content-center mb-4 stats">
                             <div class="px-2">
                                 <i class="fa fa-car text-primary mr-1"></i>
                                 <span>2015</span>
@@ -86,27 +87,40 @@
                                 <i class="fa fa-road text-primary mr-1"></i>
                                 <span>25K</span>
                             </div>
-                        </div>
+                        </div> -->
+
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
                             data-target="#exampleModalLong">
                             view
                         </button>
+                        <button type="button" class="btn btn-primary" 
+                            data-target="#exampleModalLong">
+                        <a class="like"><i class="far fa-thumbs-up mx-2 fa-xxs text-white" style="margin-top: -0.16rem;"></i>
+                            <input class="qty1" name="qty1" readonly="readonly" type="text" value="0"  style="
+                                border: none;
+                                width:20px;
+                                background: transparent;
+                        "/>
+                        </a>
+                        </button> -->
+
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                         <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+
+                            </div> -->
+                           <!-- <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Mercedes Benz R3</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <img class="img-fluid mb-4" src="img/car-rent-1.png" alt="">
-                                        <h4 class="text-uppercase mb-4">Mercedes Benz R3</h4>
                                     </div>
                                     <section>
         
@@ -130,45 +144,63 @@
                                               </div>
                                             </div>
                                           </div>
-                                      </section>
+                                      </section> -->
                                       <!--end comme-->
-                                    <div class="modal-footer">
+                                    <!-- <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
                                      
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!--  -->
 
 
-                    </div>
+                    <!-- </div>
 
 
-                </div>
+                </div> -->
 
                 <!--  -->
              
-            </div>
+            <!-- </div>
         </div>
-    </div>
+    </div> -->
     <!-- Rent A Car End -->
 
 
 
+    <div class="modal-wrapper">
+
+    </div>
 
 
 
 
 
     <!-- Back to Top -->
+    <!--like-->
+
+    <script>$(function () {
+        $(".like").click(function () {
+            var input = $(this).find('.qty1');
+            input.val(parseInt(input.val())+ 1);
+        });
+    
+        $(".dislike").click(function () {
+            var input = $(this).find('.qty2');
+            input.val(input.val() - 1);
+        });
+    });</script>
+
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-    <script src="main2.js"></script>
+    <script type="module" src="main4.js"></script>
 
     <!-- JavaScript Libraries -->
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
